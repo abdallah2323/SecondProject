@@ -48,16 +48,20 @@
                     <div class="panel-body">
                         <table class="table table-striped task-table">
                             <thead>
+                                <th>No.</th>
                                 <th>Task</th>
                                 <th>&nbsp;</th>
                             </thead>
                             <tbody>
-                                @foreach ($tasks as $task)
+                                @foreach ($tasks as $key=>$task)
                                     <tr>
+                                        <td class="table-text"><div>{{++$key}}</div></td>
                                         <td class="table-text"><div>{{$task->name}}</div></td>
                                         <!-- Task Delete Button -->
                                         <td>
-                                            <form action="#" method="POST">
+                                            <form action="/task/destroy/{{$task->id}}" method="POST">
+                                                @csrf
+                                                @method('delete')
                                                 <button type="submit" class="btn btn-danger">
                                                     <i class="fa fa-btn fa-trash"></i>Delete
                                                 </button>
