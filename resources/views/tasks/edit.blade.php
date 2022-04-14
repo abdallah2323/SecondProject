@@ -16,7 +16,7 @@
                 </div>
     
                 <div class="panel-body">
-                    {{-- @if ($errors->any())
+                    @if ($errors->any())
                         <div class="alert alert-danger">
                             <ul>
                                 @foreach ($errors->all() as $error)
@@ -24,25 +24,25 @@
                                 @endforeach
                             </ul>
                         </div>
-                    @endif --}}
+                    @endif
                     <!-- Display Validation Errors -->
                     <!-- New Task Form -->
-                    <form action="task/store" method="POST" class="form-horizontal">
+                    <form action="/task/update/{{$task->id}}" method="POST" class="form-horizontal">
                         @csrf
+                        @method('put')
                         <!-- Task Name -->
                         <div class="form-group">
                             <label for="task-name" class="col-sm-3 control-label">Task</label>
     
                             <div class="col-sm-6">
-                                <input type="text" name="name" id="task-name" class="form-control" value="">
+                                <input value="{{$task->name}}" type="text" name="name" id="task-name" class="form-control" value="">
                             </div>
                         </div>
-    
                         <!-- Add Task Button -->
                         <div class="form-group">
                             <div class="col-sm-offset-3 col-sm-6">
                                 <button type="submit" class="btn btn-default">
-                                    <i class="fa fa-btn fa-plus"></i>Add Task
+                                    <i class="fa fa-btn fa-plus"></i>Update
                                 </button>
                             </div>
                         </div>
